@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome — Guest Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F3EC;
+    --ink:#1F3A3D;
+    --rust:#B5482D;
+    --mustard:#C99A2E;
+    --sage:#7C8A5A;
+    --line:#1F3A3D33;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:520px;
+    margin:0 auto;
+    padding:0 0 60px;
+  }
+  header.hero{
+    padding:56px 28px 40px;
+    text-align:center;
+    position:relative;
+    border-bottom:2px solid var(--ink);
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    top:14px; left:14px; right:14px; bottom:14px;
+    border:1px solid var(--ink);
+    opacity:0.35;
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--rust);
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:clamp(34px, 9vw, 48px);
+    line-height:1.05;
+    margin:0 0 10px;
+  }
+  .hero p{
+    font-size:15px;
+    color:var(--ink);
+    opacity:0.75;
+    margin:0;
+    max-width:340px;
+    margin:0 auto;
+  }
+  section{
+    padding:36px 28px;
+    border-bottom:1px dashed var(--line);
+  }
+  .label{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:24px;
+    margin:0 0 16px;
+  }
+
+  /* Wifi ticket stub — signature element */
+  .stub{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:14px;
+    padding:24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .stub::before, .stub::after{
+    content:"";
+    position:absolute;
+    width:22px; height:22px;
+    background:var(--paper);
+    border-radius:50%;
+    top:50%;
+    transform:translateY(-50%);
+  }
+  .stub::before{ left:-11px; }
+  .stub::after{ right:-11px; }
+  .stub-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:10px 4px;
+  }
+  .stub-row + .stub-row{
+    border-top:1px dashed #F7F3EC55;
+  }
+  .stub-key{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    opacity:0.65;
+  }
+  .stub-val{
+    font-family:'Space Mono', monospace;
+    font-size:17px;
+    font-weight:700;
+    text-align:right;
+  }
+
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .card{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px;
+  }
+  .card .label{ margin-bottom:6px; }
+  .card .big{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:20px;
+  }
+  .card .sub{
+    font-size:13px;
+    opacity:0.7;
+    margin-top:2px;
+  }
+
+  ul.rules{
+    list-style:none;
+    margin:0; padding:0;
+  }
+  ul.rules li{
+    display:flex;
+    gap:12px;
+    padding:10px 0;
+    font-size:15px;
+    border-top:1px solid var(--line);
+  }
+  ul.rules li:first-child{ border-top:none; }
+  ul.rules li .mark{
+    font-family:'Space Mono', monospace;
+    color:var(--rust);
+    flex-shrink:0;
+  }
+
+  .rec{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 0;
+    border-top:1px solid var(--line);
+  }
+  .rec:first-child{ border-top:none; }
+  .rec-name{ font-weight:600; font-size:15px; }
+  .rec-note{ font-size:13px; opacity:0.7; margin-top:2px; }
+  .rec-dist{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    color:var(--sage);
+    white-space:nowrap;
+    align-self:flex-start;
+  }
+
+  .emergency{
+    background:var(--rust);
+    color:var(--paper);
+    border-radius:10px;
+    padding:18px 20px;
+  }
+  .emergency .label{ color:var(--paper); opacity:0.85; }
+  .emergency .label::after{ background:var(--paper); opacity:0.3; }
+  .emergency-row{
+    display:flex;
+    justify-content:space-between;
+    padding:6px 0;
+    font-size:14px;
+  }
+  .emergency-row b{ font-family:'Space Mono', monospace; }
+
+  footer{
+    text-align:center;
+    padding:36px 28px 8px;
+  }
+  footer p{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:16px;
+    opacity:0.8;
+    margin:0;
+  }
+
+  @media (max-width:380px){
+    .grid2{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Est. Your Airbnb · Guest No. 001</div>
+    <h1>Welcome<br>Home</h1>
+    <p>Everything you need for your stay — wifi, house notes, and a few of our favorite spots nearby.</p>
+  </header>
+
+  <section>
+    <div class="label">Wifi</div>
+    <div class="stub">
+      <div class="stub-row">
+        <span class="stub-key">Network</span>
+        <span class="stub-val">YourWifiName</span>
+      </div>
+      <div class="stub-row">
+        <span class="stub-key">Password</span>
+        <span class="stub-val">YourWifiPassword</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Check-in / Check-out</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="label">Check-in</div>
+        <div class="big">3:00 PM</div>
+        <div class="sub">Lockbox code: 0000</div>
+      </div>
+      <div class="card">
+        <div class="label">Check-out</div>
+        <div class="big">11:00 AM</div>
+        <div class="sub">Leave key in lockbox</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">House Notes</div>
+    <h2>A few things to know</h2>
+    <ul class="rules">
+      <li><span class="mark">→</span> No smoking anywhere on the property.</li>
+      <li><span class="mark">→</span> Quiet hours are 10 PM – 8 AM, thanks for respecting the neighbors.</li>
+      <li><span class="mark">→</span> Trash bins are around the side gate — pickup is Tuesday mornings.</li>
+      <li><span class="mark">→</span> Thermostat is on the hallway wall, feel free to adjust.</li>
+      <li><span class="mark">→</span> Extra towels and blankets are in the hall closet.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="label">Nearby Favorites</div>
+    <h2>Where we'd send a friend</h2>
+    <div class="rec">
+      <div>
+        <div class="rec-name">Corner coffee spot</div>
+        <div class="rec-note">Great espresso, opens early</div>
+      </div>
+      <div class="rec-dist">5 min walk</div>
+    </div>
+    <div class="rec">
+      <div>
+        <div class="rec-name">Neighborhood diner</div>
+        <div class="rec-note">Best breakfast in the area</div>
+      </div>
+      <div class="rec-dist">8 min walk</div>
+    </div>
+    <div class="rec">
+      <div>
+        <div class="rec-name">Local park</div>
+        <div class="rec-note">Nice for a morning walk</div>
+      </div>
+      <div class="rec-dist">10 min walk</div>
+    </div>
+  </section>
+
+  <section style="border-bottom:none;">
+    <div class="label">In Case of Anything</div>
+    <div class="emergency">
+      <div class="emergency-row"><span>Host (that's us)</span><b>(555) 555-5555</b></div>
+      <div class="emergency-row"><span>Nearest urgent care</span><b>(555) 555-1234</b></div>
+      <div class="emergency-row"><span>Emergency</span><b>911</b></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Make yourself at home.</p>
+  </footer>
+
+</div>
+</body>
+</html>
